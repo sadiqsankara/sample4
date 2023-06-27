@@ -1,0 +1,186 @@
+* {
+    margin:0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    /*this reduces the scrollbar width*/
+    height: 10px;
+    /*this reduces the height*/
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background:  rgb(3, 80, 3);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background:  rgb(7, 163, 7);
+  }
+body {
+    background-color: none;
+}
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 50px;
+    font-weight: bold;
+    position: fixed;
+    top: 0px;
+    width: 100%; 
+    border-bottom: 2px solid rgb(7, 163, 7);
+}
+    .transparent-background{
+        width: 100%;
+        height: 60px;
+        background-color: black;
+        opacity: 0.3;
+        top: 0px;
+        z-index: -1;
+        position: fixed;
+}
+#menu-logo{
+    display: none;
+}
+.logo,#menu-logo {
+    font-weight: bold;
+    font-size: 30px;
+    background-color:  rgb(7, 163, 7);
+    background-image: linear-gradient(to right,  rgb(7, 163, 7),  rgb(4, 77, 4)); 
+    padding: 7px 13px;
+    cursor: pointer;
+    overflow: hidden;
+    clip-path: polygon(
+        0% 10%,
+        10% 0%,
+        90% 0%,
+        100% 10%,
+        100% 90%,
+        90% 100%,
+        10% 100%,
+        0% 90%,
+        0% 10%
+    );
+}
+.menubar {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer; 
+}
+.menubar i{
+    color: white;
+    /*this was able to work by seprately selecting 
+    (targetting) the i tagadding the i tag*/
+}
+.menu ul{
+    display:flex;
+    flex-wrap: nowrap;
+    gap: 25px;
+    list-style: none;
+    text-transform: uppercase;
+}
+.menu ul li a{
+    text-decoration: none;
+} 
+.menu ul li a:hover{
+    transition: 0.5s;
+    text-decoration: underline;
+    color: rgb(7, 163, 7); 
+}
+.submenu1 > li{
+/*This (>) ensures it target only the 
+decendent element one level down*/
+    font-size: 17px; 
+}
+@media (max-width: 760px) {
+        nav{
+            padding: 0 10px;
+            height: 60px;
+        }
+        .menu {
+            height: 350px;
+            /*This will be percentage height to any 
+            device. This is the best way to specify 
+            height in this example*/
+            position: fixed;
+            left:0;
+             /*or leftt: 0 remove the 20px nav padding 
+             from the left*/
+            top: 0;
+            width: 100%;
+            /* width in px will ensure a fix width size 
+            irrespective of the device size unlike % 
+            size*/
+            background-color: black;
+            border-bottom: 5px solid rgb(7, 163, 7);
+            transition: 0.2s; 
+            opacity: 1;
+            visibility: show;
+            overflow:auto;
+            /*This will enable scrolling when required 
+            by default*/
+        }
+        .menu ul{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /*centers all the element vertically*/
+            margin: 20px 0 20px 0;   
+        }
+        .menubar{
+            display: block;
+            font-size: 30px;
+            padding: 7px 12px;
+            z-index: 1;
+        }
+        .transparent-background{
+            height: 60px;
+        }
+        #menu-logo{
+            display: block;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: capitalize;
+            margin-bottom: 15px;  
+        }
+        .menu-footer{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+            background-color: rgb(7, 163, 7);
+            background-image: linear-gradient(to right,  rgb(7, 163, 7),  rgba(0, 0, 0, 0.76)); 
+            top:200px;
+            left: 0px;
+            width: 100%;
+            /*the width will be 100% of .menu class 70% 
+            i.e, relative to .menu class*/
+        }
+        .menu.active{
+            visibility: hidden;
+            opacity: 0;
+        }
+        /*Opacity only reduces the transparency of 
+        the element but it can still be interactable, 
+        hence combining visibilty and opacity*/
+        .menu.active{
+            width: 0%;
+        }
+        }
